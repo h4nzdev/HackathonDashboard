@@ -1,0 +1,16 @@
+[
+  {
+    "date": "2025-07-08",
+    "location": "Colon St.",
+    "type": "Online Recruitment",
+    "status": "Investigating",
+    "reportedBy": "Barangay Official"
+  },
+  {
+    "date": "2025-07-07",
+    "location": "Pier 1",
+    "type": "Suspicious Activity",
+    "status": "Flagged",
+    "reportedBy": "Concerned Citizen"
+  }
+]
