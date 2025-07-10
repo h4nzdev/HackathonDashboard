@@ -1,13 +1,14 @@
-import { Home, FileText, Map, Search, Settings, LogOut } from 'lucide-react';
+import { Home, FileText, Map, Search, Settings, LogOut, Flag } from 'lucide-react';
 
 
 const navItems = [
-  { name: 'Dashboard', icon: Home, path: '/' },
-  { name: 'Cases', icon: FileText, path: '/cases' },
-  { name: 'Heatmap', icon: Map, path: '/heatmap' },
-  { name: 'Keyword Monitor', icon: Search, path: '/keywords' },
-  { name: 'Settings', icon: Settings, path: '#' },
-  { name: 'Logout', icon: LogOut, path: '#' }
+  { name: "Dashboard", icon: Home, path: "/" },
+  { name: "Cases", icon: FileText, path: "/cases" },
+  { name: "Categories", icon: Flag, path: "/categories" },
+  { name: "Heatmap", icon: Map, path: "/heatmap" },
+  { name: "Keyword Monitor", icon: Search, path: "/keywords" },
+  { name: "Settings", icon: Settings, path: "#" },
+  { name: "Logout", icon: LogOut, path: "#" },
 ];
 
 import { Link, useLocation } from 'react-router-dom';

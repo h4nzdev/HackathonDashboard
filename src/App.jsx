@@ -10,6 +10,7 @@ import CasesPage from './pages/CasesPage';
 import HeatmapPage from './pages/HeatmapPage';
 import KeywordPage from './pages/KeywordPage';
 import stats from './data/dashboardStats.json';
+import CategoriesPage from "./pages/CategoriesPage";
 import { AlertCircle, Facebook, Flag, MapPin } from 'lucide-react';
 
 
@@ -29,23 +30,28 @@ export default function App() {
           <Header />
           <main className="flex-1 p-8 bg-slate-900 overflow-y-auto">
             <Routes>
-              <Route path="/" element={
-                <>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-8">
-                    {cards.map((card, idx) => (
-                      <DashboardCard key={idx} {...card} />
-                    ))}
-                  </div>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div>
-                      <KeywordLogTable />
-                      <CasesTable />
+              <Route
+                path="/"
+                element={
+                  <>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+                      {cards.map((card, idx) => (
+                        <DashboardCard key={idx} {...card} />
+                      ))}
                     </div>
-                    <HeatmapMap />
-                  </div>
-                </>
-              } />
+                    {/* Category Stat Cards and Table moved to /categories page */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                      <div>
+                        <KeywordLogTable />
+                        <CasesTable />
+                      </div>
+                      <HeatmapMap />
+                    </div>
+                  </>
+                }
+              />
               <Route path="/cases" element={<CasesPage />} />
+              <Route path="/categories" element={<CategoriesPage />} />
               <Route path="/heatmap" element={<HeatmapPage />} />
               <Route path="/keywords" element={<KeywordPage />} />
             </Routes>
