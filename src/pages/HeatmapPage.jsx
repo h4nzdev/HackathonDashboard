@@ -3,9 +3,9 @@ import 'leaflet/dist/leaflet.css';
 
 // Example static data for Cebu risk points
 const riskPoints = [
-  { lat: 10.3157, lng: 123.8854, risk: 'high', label: 'Colon St.' },
-  { lat: 10.3076, lng: 123.9111, risk: 'medium', label: 'Pier 1' },
-  { lat: 10.3238, lng: 123.9222, risk: 'low', label: 'IT Park' },
+  { lat: 10.2914, lng: 123.8989, risk: 'high', label: 'Carbon Market' },
+  { lat: 10.3098, lng: 123.8931, risk: 'medium', label: 'Fuente Osmeña Circle' },
+  { lat: 10.3304, lng: 123.9074, risk: 'low', label: 'IT Park - Apas' },
 ];
 
 const riskColor = {
@@ -19,7 +19,7 @@ export default function HeatmapPage() {
     <div className="p-6 bg-slate-900 min-h-screen text-slate-100">
       <h2 className="text-2xl font-bold mb-4">Cebu Trafficking Risk Heatmap</h2>
       <div className="w-full h-[400px] rounded-lg overflow-hidden mb-4">
-        <MapContainer center={[10.3157, 123.8854]} zoom={13} style={{ height: '100%', width: '100%' }}>
+        <MapContainer center={[10.3000, 123.8950]} zoom={13} style={{ height: '100%', width: '100%' }}>
           <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             attribution="&copy; OpenStreetMap contributors"
