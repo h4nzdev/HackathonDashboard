@@ -15,11 +15,20 @@ const colorMap = [
 ];
 
 export default function CategorySection({ stats }) {
+  // Sort stats by count in descending order for better visual hierarchy
+  const sortedStats = [...stats].sort((a, b) => b.count - a.count);
+  
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-10">
-      {stats.map((item, idx) => (
-        <CategoryStatCard key={item.category} {...item} color={colorMap[idx % colorMap.length]} />
-      ))}
+    <div className="bg-slate-900 rounded-lg border border-slate-800 p-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {sortedStats.map((item, idx) => (
+          <CategoryStatCard 
+            key={item.category} 
+            {...item} 
+            color={colorMap[idx % colorMap.length]} 
+          />
+        ))}
+      </div>
     </div>
   );
 }
