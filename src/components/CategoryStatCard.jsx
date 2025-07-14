@@ -1,6 +1,11 @@
-export default function CategoryStatCard({ category, count, desc, color }) {
+import { motion } from "framer-motion";
+export default function CategoryStatCard({ category, count, desc, color, index }) {
   return (
-    <div
+    <motion.div
+    initial={{opacity: 0, y: 50}}
+    whileInView={{opacity: 1, y: 0}}
+    transition={{duration: .5}}
+    viewport={{once:true}}
       className={`bg-gradient-to-br from-slate-800 to-slate-900 rounded-xl p-6 shadow-lg flex flex-col min-w-[220px] border-l-8 ${color} transition-transform hover:scale-105 hover:shadow-2xl duration-200`}
     >
       <div className="flex items-center justify-between mb-2">
@@ -23,6 +28,6 @@ export default function CategoryStatCard({ category, count, desc, color }) {
       >
         {desc}
       </div>
-    </div>
+    </motion.div>
   );
 }

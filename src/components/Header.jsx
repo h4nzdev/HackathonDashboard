@@ -44,7 +44,7 @@ export default function Header() {
           </button>
 
           {showNotifications && (
-            <div className="absolute right-0 mt-2 w-80 bg-slate-800 rounded-lg shadow-xl border border-slate-700 py-2 z-50">
+            <div className="absolute md:right-0 -right-3 mt-2 w-80 bg-slate-800 rounded-lg shadow-xl border border-slate-700 py-2 z-50">
               {notifications.map((notification) => (
                 <div
                   key={notification.id}

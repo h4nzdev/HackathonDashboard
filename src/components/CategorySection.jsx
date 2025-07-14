@@ -24,6 +24,7 @@ export default function CategorySection({ stats }) {
         {sortedStats.map((item, idx) => (
           <CategoryStatCard 
             key={item.category} 
+            index={idx}
             {...item} 
             color={colorMap[idx % colorMap.length]} 
           />

@@ -166,8 +166,8 @@ export default function App() {
           key="loader"
           initial={{ opacity: 1 }}
           animate={{ opacity: 1 }}
-          exit={{ opacity: 0, y: -200}}
-          transition={{ duration: .3 }}
+          exit={{ opacity: 0, y: -200 }}
+          transition={{ duration: 0.3 }}
           className="flex items-center justify-center h-screen w-full flex-col"
         >
           <img src={JuvoIcon} className="w-50 h-50 animate-spin" />
