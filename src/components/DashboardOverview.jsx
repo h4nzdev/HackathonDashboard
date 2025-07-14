@@ -17,7 +17,7 @@ export default function DashboardOverview({ cards }) {
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-6 sm:mb-8 lg:mb-10">
         {cards.map((card, idx) => (
-          <DashboardCard key={idx} {...card} />
+          <DashboardCard key={idx} index={idx} {...card} />
         ))}
       </div>
     </section>

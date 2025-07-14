@@ -7,11 +7,29 @@ export default function CaseFormModal({
   setCaseForm,
   setShowCaseForm
 }) {
+  const statusOptions = [
+    { value: "pending", label: "Pending" },
+    { value: "in-progress", label: "In Progress" },
+    { value: "resolved", label: "Resolved" },
+  ];
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Add current timestamp if date is empty
+    const formData = {
+      ...caseForm,
+      date: caseForm.date || new Date().toISOString().split("T")[0],
+      status: caseForm.status || statusOptions[0].value,
+    };
+    handleAddCase(e, formData);
+  };
+
   if (!showCaseForm) return null;
+
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-100 p-4">
       <form
-        onSubmit={handleAddCase}
+        onSubmit={handleSubmit}
         className="bg-slate-900 border border-slate-700 p-4 sm:p-6 lg:p-8 rounded-lg sm:rounded-xl shadow-2xl w-full max-w-xs sm:max-w-md"
       >
         <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-slate-100 mb-4 sm:mb-6 text-center">
@@ -24,10 +42,11 @@ export default function CaseFormModal({
             </label>
             <input
               type="date"
-              required
-              className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-md sm:rounded-lg bg-slate-800 border border-slate-700 text-slate-100 text-center text-sm sm:text-base"
+              className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-md sm:rounded-lg bg-slate-800 border border-slate-700 text-slate-100 text-sm sm:text-base"
               value={caseForm.date}
-              onChange={(e) => setCaseForm((f) => ({ ...f, date: e.target.value }))}
+              onChange={(e) =>
+                setCaseForm((f) => ({ ...f, date: e.target.value }))
+              }
             />
           </div>
           <div>
@@ -40,7 +59,9 @@ export default function CaseFormModal({
               placeholder="Enter location"
               className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-md sm:rounded-lg bg-slate-800 border border-slate-700 text-slate-100 text-sm sm:text-base placeholder:text-slate-500"
               value={caseForm.location}
-              onChange={(e) => setCaseForm((f) => ({ ...f, location: e.target.value }))}
+              onChange={(e) =>
+                setCaseForm((f) => ({ ...f, location: e.target.value }))
+              }
             />
           </div>
           <div>
@@ -53,21 +74,32 @@ export default function CaseFormModal({
               placeholder="Case type"
               className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-md sm:rounded-lg bg-slate-800 border border-slate-700 text-slate-100 text-sm sm:text-base placeholder:text-slate-500"
               value={caseForm.type}
-              onChange={(e) => setCaseForm((f) => ({ ...f, type: e.target.value }))}
+              onChange={(e) =>
+                setCaseForm((f) => ({ ...f, type: e.target.value }))
+              }
             />
           </div>
           <div>
             <label className="block text-xs sm:text-sm font-medium text-slate-300 mb-1 sm:mb-2">
               Status
             </label>
-            <input
-              type="text"
+            <select
               required
-              placeholder="Status"
-              className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-md sm:rounded-lg bg-slate-800 border border-slate-700 text-slate-100 text-sm sm:text-base placeholder:text-slate-500"
+              className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-md sm:rounded-lg bg-slate-800 border border-slate-700 text-slate-100 text-sm sm:text-base"
               value={caseForm.status}
-              onChange={(e) => setCaseForm((f) => ({ ...f, status: e.target.value }))}
-            />
+              onChange={(e) =>
+                setCaseForm((f) => ({ ...f, status: e.target.value }))
+              }
+            >
+              <option value="" disabled>
+                Select status
+              </option>
+              {statusOptions.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
+            </select>
           </div>
           <div>
             <label className="block text-xs sm:text-sm font-medium text-slate-300 mb-1 sm:mb-2">
@@ -79,7 +111,9 @@ export default function CaseFormModal({
               placeholder="Reporter name"
               className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-md sm:rounded-lg bg-slate-800 border border-slate-700 text-slate-100 text-sm sm:text-base placeholder:text-slate-500"
               value={caseForm.reportedBy}
-              onChange={(e) => setCaseForm((f) => ({ ...f, reportedBy: e.target.value }))}
+              onChange={(e) =>
+                setCaseForm((f) => ({ ...f, reportedBy: e.target.value }))
+              }
             />
           </div>
         </div>
