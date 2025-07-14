@@ -9,7 +9,7 @@ export default function DashboardOverview({ cards }) {
     >
       <div className="text-center mb-6 sm:mb-8 lg:mb-10">
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-100 mb-2 sm:mb-3">
-          Anti Trafficking Dashboard
+          Dashboard
         </h2>
         <p className="text-slate-400 text-sm sm:text-base lg:text-lg">
           Comprehensive monitoring and case management system

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "./components/Header";
 import FloatingNavigation from "./components/FloatingNavigation";
 import DashboardOverview from "./components/DashboardOverview";
@@ -13,6 +13,7 @@ import categoryStats from "./data/categoryStats.json";
 import casesData from "./data/caseReports.json";
 import logsData from "./data/keywordLogs.json";
 import { motion, AnimatePresence } from "framer-motion";
+import JuvoIcon from "./assets/juvo.svg";
 import {
   AlertCircle,
   Facebook,
@@ -36,6 +37,7 @@ export default function App() {
   const [searchLogs, setSearchLogs] = useState("");
   const [showCaseForm, setShowCaseForm] = useState(false);
   const [showLogForm, setShowLogForm] = useState(false);
+  const [loader, setLoader] = useState(true);
   const [caseForm, setCaseForm] = useState({
     date: "",
     location: "",
@@ -50,6 +52,14 @@ export default function App() {
     keyword: "",
     status: "",
   });
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoader(false);
+    }, 500);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   // Navigation items
   const navigationItems = [
@@ -150,45 +160,67 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-950">
-      <Header />
-      <FloatingNavigation
-        navigationItems={navigationItems}
-        scrollToSection={scrollToSection}
-      />
-      <main className="p-4 sm:p-6 lg:p-8 space-y-8 sm:space-y-12 lg:space-y-16">
-        <DashboardOverview cards={cards} />
-        <CategoriesSection categoryStats={categoryStats} />
-        <CasesManagement
-          filteredCases={filteredCases}
-          searchCases={searchCases}
-          setSearchCases={setSearchCases}
-          setShowCaseForm={setShowCaseForm}
-          cases={cases}
-        />
-        <HeatmapSection riskPoints={riskPoints} riskColor={riskColor} />
-        <KeywordsSection
-          filteredLogs={filteredLogs}
-          searchLogs={searchLogs}
-          setSearchLogs={setSearchLogs}
-          setShowLogForm={setShowLogForm}
-          logs={logs}
-        />
-      </main>
-      <CaseFormModal
-        showCaseForm={showCaseForm}
-        handleAddCase={handleAddCase}
-        caseForm={caseForm}
-        setCaseForm={setCaseForm}
-        setShowCaseForm={setShowCaseForm}
-      />
-      <LogFormModal
-        showLogForm={showLogForm}
-        handleAddLog={handleAddLog}
-        logForm={logForm}
-        setLogForm={setLogForm}
-        setShowLogForm={setShowLogForm}
-      />
-    </div>
+    <AnimatePresence mode="wait">
+      {loader ? (
+        <motion.div
+          key="loader"
+          initial={{ opacity: 1 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+          className="flex items-center justify-center h-screen w-full flex-col"
+        >
+          <img src={JuvoIcon} className="w-50 h-50 animate-spin" />
+        </motion.div>
+      ) : (
+        <motion.div
+          key="dashboard"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.5 }}
+          className="min-h-screen bg-slate-950"
+        >
+          <Header />
+          <FloatingNavigation
+            navigationItems={navigationItems}
+            scrollToSection={scrollToSection}
+          />
+          <main className="p-4 sm:p-6 lg:p-8 space-y-8 sm:space-y-12 lg:space-y-16">
+            <DashboardOverview cards={cards} />
+            <CategoriesSection categoryStats={categoryStats} />
+            <CasesManagement
+              filteredCases={filteredCases}
+              searchCases={searchCases}
+              setSearchCases={setSearchCases}
+              setShowCaseForm={setShowCaseForm}
+              cases={cases}
+            />
+            <HeatmapSection riskPoints={riskPoints} riskColor={riskColor} />
+            <KeywordsSection
+              filteredLogs={filteredLogs}
+              searchLogs={searchLogs}
+              setSearchLogs={setSearchLogs}
+              setShowLogForm={setShowLogForm}
+              logs={logs}
+            />
+          </main>
+          <CaseFormModal
+            showCaseForm={showCaseForm}
+            handleAddCase={handleAddCase}
+            caseForm={caseForm}
+            setCaseForm={setCaseForm}
+            setShowCaseForm={setShowCaseForm}
+          />
+          <LogFormModal
+            showLogForm={showLogForm}
+            handleAddLog={handleAddLog}
+            logForm={logForm}
+            setLogForm={setLogForm}
+            setShowLogForm={setShowLogForm}
+          />
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }
