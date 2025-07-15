@@ -32,7 +32,7 @@ export default function KeywordPage() {
     <div className="p-6 bg-slate-900 min-h-screen text-slate-100">
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-2xl font-bold">Keyword Detection Log</h2>
-        <button onClick={() => setShowForm(true)} className="flex items-center gap-2 bg-yellow-500 hover:bg-yellow-600 text-slate-900 px-4 py-2 rounded shadow">
+        <button onClick={() => setShowForm(true)} className="flex items-center gap-2 sm:gap-3 bg-yellow-500 hover:bg-yellow-600 active:bg-yellow-700 text-slate-900 px-4 sm:px-6 lg:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl transition-colors font-medium text-sm sm:text-base lg:text-lg shadow-lg touch-manipulation">
           <Plus size={18} /> Add Log
         </button>
       </div>
@@ -67,7 +67,7 @@ export default function KeywordPage() {
                 <td className="px-3 py-2">{log.page}</td>
                 <td className="px-3 py-2">{log.keyword}</td>
                 <td className="px-3 py-2">
-                  <span className="px-2 py-1 rounded bg-red-600 text-xs font-bold text-white">{log.status}</span>
+                  <span className="px-3 sm:px-4 py-2 rounded-md sm:rounded-lg bg-red-600 text-sm sm:text-base font-medium text-white w-[120px] text-center inline-block">{log.status}</span>
                 </td>
               </tr>
             ))}
@@ -98,9 +98,9 @@ export default function KeywordPage() {
               <label className="block mb-1">Status</label>
               <input type="text" required className="w-full px-3 py-2 rounded bg-slate-700 border border-yellow-500 text-slate-100" value={form.status} onChange={e => setForm(f => ({ ...f, status: e.target.value }))} />
             </div>
-            <div className="flex justify-end gap-2">
-              <button type="button" onClick={() => setShowForm(false)} className="px-4 py-2 rounded bg-slate-700 text-slate-200">Cancel</button>
-              <button type="submit" className="px-4 py-2 rounded bg-yellow-500 hover:bg-yellow-600 text-slate-900 font-bold">Add</button>
+            <div className="flex flex-col sm:flex-row justify-center gap-2 sm:gap-4">
+              <button type="button" onClick={() => setShowForm(false)} className="px-4 sm:px-6 py-2 sm:py-3 rounded-md sm:rounded-lg bg-slate-700 text-slate-200 hover:bg-slate-600 active:bg-slate-500 transition-colors font-medium text-sm sm:text-base touch-manipulation">Cancel</button>
+              <button type="submit" className="px-4 sm:px-6 py-2 sm:py-3 rounded-md sm:rounded-lg bg-yellow-500 hover:bg-yellow-600 active:bg-yellow-700 text-slate-900 font-medium transition-colors text-sm sm:text-base touch-manipulation">Add</button>
             </div>
           </form>
         </div>

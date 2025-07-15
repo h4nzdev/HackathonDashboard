@@ -23,7 +23,7 @@ export default function KeywordLogTable() {
                 <td className="px-3 py-2">{log.page}</td>
                 <td className="px-3 py-2">{log.keyword}</td>
                 <td className="px-3 py-2">
-                  <span className="px-2 py-1 rounded bg-red-600 text-xs font-bold text-white">{log.status}</span>
+                  <span className="px-3 sm:px-4 py-2 rounded-md sm:rounded-lg bg-red-600 text-sm sm:text-base font-medium text-white w-[120px] text-center inline-block">{log.status}</span>
                 </td>
               </tr>
             ))}

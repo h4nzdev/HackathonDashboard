@@ -32,7 +32,7 @@ export default function CasesPage() {
     <div className="p-6 bg-slate-800 min-h-screen text-slate-100">
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-2xl font-bold">Case Reports</h2>
-        <button onClick={() => setShowForm(true)} className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded shadow">
+        <button onClick={() => setShowForm(true)} className="flex items-center gap-2 sm:gap-3 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white px-4 sm:px-6 lg:px-8 py-3 sm:py-4 rounded-lg sm:rounded-xl transition-colors font-medium text-sm sm:text-base lg:text-lg shadow-lg touch-manipulation">
           <Plus size={18} /> Add Case
         </button>
       </div>
@@ -66,7 +66,7 @@ export default function CasesPage() {
                 <td className="px-3 py-2">{c.location}</td>
                 <td className="px-3 py-2">{c.type}</td>
                 <td className="px-3 py-2">
-                  <span className={`px-2 py-1 rounded text-xs font-bold text-white ${c.status === 'Flagged' ? 'bg-red-600' : 'bg-yellow-600'}`}>{c.status}</span>
+                  <span className={`px-3 sm:px-4 py-2 rounded-md sm:rounded-lg text-sm sm:text-base font-medium text-white w-[120px] text-center inline-block ${c.status === 'Flagged' ? 'bg-red-600' : 'bg-yellow-600'}`}>{c.status}</span>
                 </td>
                 <td className="px-3 py-2">{c.reportedBy}</td>
               </tr>
@@ -98,9 +98,9 @@ export default function CasesPage() {
               <label className="block mb-1">Reported By</label>
               <input type="text" required className="w-full px-3 py-2 rounded bg-blue-800 border border-blue-700 text-slate-100" value={form.reportedBy} onChange={e => setForm(f => ({ ...f, reportedBy: e.target.value }))} />
             </div>
-            <div className="flex justify-end gap-2">
-              <button type="button" onClick={() => setShowForm(false)} className="px-4 py-2 rounded bg-slate-700 text-slate-200">Cancel</button>
-              <button type="submit" className="px-4 py-2 rounded bg-blue-600 hover:bg-blue-700 text-white font-bold">Add</button>
+            <div className="flex flex-col sm:flex-row justify-center gap-2 sm:gap-4">
+              <button type="button" onClick={() => setShowForm(false)} className="px-4 sm:px-6 py-2 sm:py-3 rounded-md sm:rounded-lg bg-slate-700 text-slate-200 hover:bg-slate-600 active:bg-slate-500 transition-colors font-medium text-sm sm:text-base touch-manipulation">Cancel</button>
+              <button type="submit" className="px-4 sm:px-6 py-2 sm:py-3 rounded-md sm:rounded-lg bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-medium transition-colors text-sm sm:text-base touch-manipulation">Add</button>
             </div>
           </form>
         </div>
