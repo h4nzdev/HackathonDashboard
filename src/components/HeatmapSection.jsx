@@ -20,7 +20,7 @@ export default function HeatmapSection({ riskPoints, riskColor }) {
         <div className="xl:col-span-3 bg-slate-800/50 rounded-lg sm:rounded-xl border border-slate-700 p-4 sm:p-6">
           <div className="bg-slate-900 rounded-lg border border-slate-700 p-4 sm:p-6">
             <div className="w-full h-64 sm:h-80 lg:h-[500px] rounded-lg overflow-hidden mb-4 sm:mb-6">
-              <MapContainer dragging={false} center={[10.3, 123.895]} zoom={13} style={{ height: "100%", width: "100%" }}>
+              <MapContainer dragging={false} zoom={13} center={[10.3, 123.895]} style={{ height: "100%", width: "100%" }}>
                 <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" attribution="&copy; OpenStreetMap contributors" />
                 {riskPoints.map((point, idx) => (
                   <CircleMarker
