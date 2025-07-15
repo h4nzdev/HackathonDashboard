@@ -31,3 +31,6 @@ export default function CategoryStatCard({ category, count, desc, color, index }
     </motion.div>
   );
 }
+
+
+// hierarchy
