@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { MapContainer, TileLayer, CircleMarker, Tooltip } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
-// Add custom styles to handle leaflet z-index
 const mapStyles = {
   container: {
     position: "relative",
@@ -44,7 +43,9 @@ export default function HeatmapSection({ riskPoints, riskColor }) {
               <div style={mapStyles.mapWrapper}>
                 <MapContainer
                   dragging={false}
-                  zoom={13}
+                  zoom={false}
+                  minZoom={13}
+                  maxZoom={13}
                   center={[10.3, 123.895]}
                   style={mapStyles.map}
                   zoomControl={true}
