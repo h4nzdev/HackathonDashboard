@@ -8,12 +8,13 @@ export default function FloatingNavigation({
   return (
     <AnimatePresence mode="wait">
       <motion.div
-      key="sidenav"
-      initial={{opacity: 0, x: -20}}
-      whileHover={{opacity: 1, x: 70}}
-      exit={{opacity: 0, x: -20}}
-      transition={{duration: .2}}
-      className="fixed cursor-pointer h-screen top-0 sm:left-6 lg:-left-20 z-50">
+        key="sidenav"
+        initial={{ opacity: 0, x: -20 }}
+        whileHover={{ opacity: 1, x: 70 }}
+        exit={{ opacity: 0, x: -20 }}
+        transition={{ duration: 0.2 }}
+        className="fixed cursor-pointer h-screen top-0 sm:left-6 lg:-left-20 z-50"
+      >
         <div className="h-full bg-slate-900/50 backdrop-blur-md border border-slate-700 rounded shadow-2xl p-2">
           <div className="flex flex-col gap-1">
             {navigationItems.map((item) => (
